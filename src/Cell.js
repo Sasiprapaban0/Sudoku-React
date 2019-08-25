@@ -1,10 +1,18 @@
 import React from "react";
 
-export default ({ isInitial, number, onClick }) => (
+const Cell = ({ isInitial, number, onChange }) => (
   <div
-    onClick={isInitial ? null : onClick}
+    onClick={ e => {
+      if(isInitial)
+      {
+        return;
+      }
+      onChange((number + 1 ) %5);
+    }}
     className={`cell ${isInitial ? "initial" : ""}`}
   >
-    {!!number && number}
+    {number !== 0 && number}
   </div>
 );
+
+export default Cell;
